@@ -9,11 +9,11 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/web"
+        "outputPath": "dist/archwaytokenfactory"
       },
       "configurations": {
         "development": {
-          "outputPath": "web"
+          "outputPath": "archwaytokenfactory"
         },
         "production": {}
       }
@@ -22,17 +22,17 @@
       "executor": "@nx/next:server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "web:build",
+        "buildTarget": "archwaytokenfactory:build",
         "dev": true,
         "port": 3000
       },
       "configurations": {
         "development": {
-          "buildTarget": "web:build:development",
+          "buildTarget": "archwaytokenfactory:build:development",
           "dev": true
         },
         "production": {
-          "buildTarget": "web:build:production",
+          "buildTarget": "archwaytokenfactory:build:production",
           "dev": false
         }
       }
@@ -40,14 +40,14 @@
     "export": {
       "executor": "@nx/next:export",
       "options": {
-        "buildTarget": "web:build:production"
+        "buildTarget": "archwaytokenfactory:build:production"
       }
     },
     "lint": {
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["web/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["archwaytokenfactory/**/*.{ts,tsx,js,jsx}"]
       }
     }
   },

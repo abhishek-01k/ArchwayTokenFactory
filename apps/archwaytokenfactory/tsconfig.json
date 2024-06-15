@@ -26,7 +26,8 @@
     "../dist/web/.next/types/**/*.ts",
     "next-env.d.ts",
     "../../web/.next/types/**/*.ts",
-    "../../archwaytokenfactory/.next/types/**/*.ts"
+    "../../archwaytokenfactory/.next/types/**/*.ts",
+    "../../dist/archwaytokenfactory/.next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",

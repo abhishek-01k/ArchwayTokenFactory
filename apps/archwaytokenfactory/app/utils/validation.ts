@@ -36,12 +36,7 @@ export const getImgBuff = async(img: Blob) => {
 }
 
 export const createDaoAddress = (daoName: string) => {
-    return PublicKey.findProgramAddressSync([
-        Buffer.from("governance"),
-        Buffer.from(daoName)
-    ],
-        programid
-    )[0].toBase58();
+    return;
 }
 
 export const validateTokenString = (num: string, decimals: number) => {

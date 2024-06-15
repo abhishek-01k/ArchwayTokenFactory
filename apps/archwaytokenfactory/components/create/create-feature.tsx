@@ -66,7 +66,7 @@ export default function CreateFeature() {
     const [tx, setTx] = useState("");
     const [dbId, setDbId] = useState("");
 
-    const daoAddress = new PublicKey(createDaoAddress(formData.daoName));
+    const daoAddress = "archway...";
     const daoMutation = useDaoAvailCheck(daoAddress);
 
     const handleChange = (property: string, value: string | number | bigint | boolean) => {

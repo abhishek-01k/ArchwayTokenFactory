@@ -4,6 +4,7 @@ import allstarList from "@/app/utils/allstar/list";
 import { useState } from "react";
 
 export function AirdropBar({ mint }: { mint : any }) {
+
   const query = useGetProject({mint});
   
   const calcPaidBar = (value: number, totalValue: number) => {
@@ -30,7 +31,7 @@ export function AirdropBar({ mint }: { mint : any }) {
   );
 }
 
-export function RecipientsInfo({mint}: {mint: PublicKey}) {
+export function RecipientsInfo({mint}: {mint : any}) {
   const query = useGetProject({mint});
 
   return (
@@ -41,7 +42,7 @@ export function RecipientsInfo({mint}: {mint: PublicKey}) {
   )
 }
 
-export function DistributionButton({mint}: {mint: PublicKey}) {
+export function DistributionButton({mint}: {mint: any}) {
   const [buttonText, setButtonText] = useState("Start Distribution");
 
   const query = useGetProject({mint});

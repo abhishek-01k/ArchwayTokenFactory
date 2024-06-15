@@ -1,16 +1,16 @@
+// @ts-nocheck
 import { getRecord } from "@/app/actions/fetch-record";
-import { AnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
-import { PublicKey, TransactionInstruction, TransactionSignature } from "@solana/web3.js";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import { createTransaction } from "../create/create-data-access";
 import { useTransactionToast } from "../ui/ui-layout";
 
 export function useGetProject({ mint }: { mint: PublicKey }) {
-    const { connection } = useConnection();
+
     const wallet = useWallet();
 
-    const program = generateProgram(connection, wallet as AnchorWallet);
+    const program = {
+        programId : "archway122334455"
+    };
 
     const [projectKey] = PublicKey.findProgramAddressSync([
         Buffer.from("tatami-project"),
@@ -18,7 +18,7 @@ export function useGetProject({ mint }: { mint: PublicKey }) {
     ], program.programId);
 
     return useQuery({
-      queryKey: ['get-project', { endpoint: connection.rpcEndpoint, mint }],
+      queryKey: ['get-project', { endpoint: "archway...", mint }],
       queryFn: () => program.account.project.fetch(projectKey),
     });
 }
@@ -81,9 +81,7 @@ export function useAirdropTokens({mint, setButtonText}: {mint: PublicKey, setBut
                     ixs.push(ix);
                 };
     
-                const {transaction, latestBlockhash} = await createTransaction(
-                    {ixs, connection, payer: wallet.publicKey as PublicKey}
-                );
+                const {transaction, latestBlockhash} = ""
                 
                 console.log(transaction);
                 

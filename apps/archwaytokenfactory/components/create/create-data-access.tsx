@@ -1,3 +1,4 @@
+// @ts-nocheck
 // import { useTransactionToast } from '../ui/ui-layout';
 import { useMutation } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
@@ -11,15 +12,12 @@ import allstarList from "@/app/utils/allstar/list";
 export function useCreateMetadata({
   img, address, setButtonText, setImgLink, setJsonLink, setTx, setDbId, formData, isImg, isJson, isTx, isDbId
 } : CreateMetadataProp) {
-  const {connection} = useConnection();
-  const wallet = useWallet();
+
   const transactionToast = useTransactionToast();
   const {setPage, setMint} = useContext(FormContext) as FormContextType;
-  const umi = createUmi(connection);
-  umi.use(bundlrUploader()).use(walletAdapterIdentity(wallet));
 
   return useMutation({
-    mutationKey: ['create-metadata', { endpoint: connection.rpcEndpoint, address }],
+    mutationKey: ['create-metadata', { endpoint: "archway", address }],
     mutationFn: async(
       {teamWallet,recipients, allocation}:
       MutationProps
@@ -46,7 +44,7 @@ export function useCreateMetadata({
         if (!isJson) {
           setButtonText("Upload Metadata")
           // Upload Json
-          const jsonUri = await uploadJson(imageLink, formData.name, formData.symbol, umi);
+          const jsonUri = await uploadJson(imageLink, formData.name, formData.symbol);
           jsonLink = jsonUri[0];
           console.log(jsonLink)
           setJsonLink(jsonLink);
@@ -123,10 +121,9 @@ export function useCreateMetadata({
 }
 
 export function useDaoAvailCheck(address: PublicKey) {
-  const {connection} = useConnection();
 
   return useMutation({
-    mutationKey: ['find-dao', {endpoint: connection.rpcEndpoint, address}],
+    mutationKey: ['find-dao', {endpoint: "archway", address}],
     mutationFn: async() => {
       try {
         const account = await connection.getAccountInfo(address);
@@ -143,13 +140,9 @@ export function useDaoAvailCheck(address: PublicKey) {
   })  
 }
 
-async function uploadImg(img: File, umi: Umi) {
-  const genericImg = await createGenericFileFromBrowserFile(img);
-  return await umi.uploader.upload([genericImg], {
-    onProgress: (percent) => {
-      console.log(`${percent * 100}% uploaded...`);
-    },
-  })
+async function uploadImg(img: File) {
+  return ;
+  // upload to ipfs
 }
 
 async function uploadJson(imageLink: string, name: string, symbol: string, umi: Umi) {

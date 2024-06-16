@@ -186,7 +186,7 @@ export default function CreateFeature() {
                 page === 2 ? 
                     <FormLaunch imgLink={imgLink} jsonLink={jsonLink} tx={tx} dbId={dbId} buttonText={buttonText}
                     setImgLink={setImgLink} setJsonLink={setJsonLink} setTx={setTx} setButtonText={setButtonText}
-                    setDbId={setDbId} />
+                    setDbId={setDbId}  />
                 :    
                 page === 1 ?
                     <FormReview />

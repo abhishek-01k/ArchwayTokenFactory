@@ -1,4 +1,4 @@
-import { ChangeEvent, useContext, useEffect, useMemo, useState } from "react";
+import { ChangeEvent, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { FormContext } from "./create-feature";
 import FormComponent, { FormAllocationTabs, FormButton, FormInput, FormMinHeading, FormTopHeading, DeleteButton} from "./form-component";
 import {useCreateMetadata} from "./create-data-access";
@@ -8,12 +8,80 @@ import {CSVToArray} from "../../app/utils/csv";
 import { ellipsify } from "../ui/ui-layout";
 import { addDecimals, removeDecimals, removeDecimalsNum, validateTokenString } from "@/app/utils/validation";
 import allstarList from "@/app/utils/allstar/list";
+import { SigningArchwayClient } from '@archwayhq/arch3.js';
+import { coins } from '@cosmjs/stargate';
+import { useSigningClient } from "react-keplr";
+
 
 export function FormLaunch({
     imgLink, tx, jsonLink, buttonText, setImgLink, setJsonLink, setTx, setButtonText, dbId, setDbId
 }: FormLaunchProps) {
     const {formData, setPage, imgFile} = useContext(FormContext) as FormContextType;
     const publicKey = 'archway';
+    const [signer, setSigner] = useState(null);
+    const { walletAddress, connectWallet, signingClient, disconnect, client } = useSigningClient();
+    const [feedback, setFeedback] = useState("");
+
+    console.log(signingClient,"connect walle", feedback);
+
+
+
+    const createToken = async () => {
+        try {
+            // const signer = signingClient?.signer();
+            // const client = await SigningArchwayClient.connectWithSigner("https://rpc.testnet.archway.io", signer!);
+            console.log(signingClient,"client", walletAddress,"wallet");
+
+            // Check if the account has enough funds
+            // const account = await signingClient?.getAccount(walletAddress);
+            // console.log(account,"account")
+            // if (!account) {
+            //     setFeedback('Account does not exist on chain. Send some tokens there before trying to create a token.');
+            //     return;
+            // }
+
+            const balance = await signingClient?.getBalance(walletAddress, 'aconst');
+            console.log(balance,":balam");
+
+            if (balance?.amount === '0') {
+                setFeedback('Account does not have enough funds. Please fund your account.');
+                return;
+            }
+
+            const msg = {
+                typeUrl: "/cosmwasm.wasm.v1.MsgInstantiateContract",
+                value: {
+                    name: formData.name,
+                    symbol: formData.symbol,
+                    totalSupply: formData.supply,
+                    decimals: formData.decimals,
+                    owner: walletAddress
+                },
+            };
+
+            console.log(msg,"msg")
+
+            // Estimate the gas fee
+            // const feeEstimate = await signingClient?.simulate("archway1vmlurcv83zta6tlsnjrcw85cajrf2j2mc5wsv9", [msg], "create token");
+            // console.log(feeEstimate,"estimated fee")
+            // const gasLimit = feeEstimate?.gas_used;
+            // console.log(feeEstimate,gasLimit,
+            //     "feee"
+            // )
+            // const gasPrice = 0.025; // Assuming gas price is 0.025 aconst per gas unit
+            // const fee = {
+            //     amount: coins(gasLimit * gasPrice, ""),
+            //     gas: gasLimit.toString(),
+            // };
+
+            const result = await signingClient?.signAndBroadcast(walletAddress, [msg], 0.04);
+            console.log(result);
+            setFeedback('Token created successfully!');
+        } catch (error) {
+            console.error("Failed to create token", error);
+            setFeedback('Failed to create token.');
+        }
+    };
 
     const {symbol, supply, decimals} = formData;
 
@@ -24,7 +92,7 @@ export function FormLaunch({
     const [recipients, setRecipients] = useState<Recipient[]>([]);
     const [teamWallet, setTeamWallet] = useState("");
 
-    //Errors
+    // Errors
     const [allocError, setAllocError] = useState("");
     const [csvError, setCsvError] = useState("");
     const [teamWalletError, setTeamWalletError] = useState("");
@@ -331,7 +399,7 @@ export function FormLaunch({
                 </FormComponent>
 
                 <div className="mb-16 flex flex-row items-start gap-1 text-[#9393A9]">
-                    <FormButton title={buttonText} onClick={handleCreateButton} disabled={mutation.isPending}
+                    <FormButton title={buttonText} onClick={()=> createToken()} disabled={mutation.isPending}
                     addClass="bg-gradient-to-b from-golden-200 to-golden-100 text-white px-8 py-3"/>
                     <FormButton title="Back" onClick={() => setPage(1)} addClass="px-8 py-3" />
                 </div>

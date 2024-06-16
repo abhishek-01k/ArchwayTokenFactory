@@ -1,4 +1,3 @@
-// https://docs.keplr.app/api/suggest-chain.html
 import { ChainInfo } from "@keplr-wallet/types";
 const CHAIN_ID = process.env.NEXT_PUBLIC_CHAIN_ID || "";
 const CHAIN_NAME = process.env.NEXT_PUBLIC_CHAIN_NAME || "";

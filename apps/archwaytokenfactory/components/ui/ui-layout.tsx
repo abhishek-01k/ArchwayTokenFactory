@@ -22,10 +22,12 @@ export function UiLayout({ children }: { children: ReactNode }) {
 
   const { walletAddress, connectWallet, signingClient, disconnect, client } = useSigningClient();
 
-  function connectToWallet() {
+  async function connectToWallet () {
     if (!signingClient) {
       console.log("connecting");
-      if(connectWallet) connectWallet();
+      if (connectWallet) {
+        await connectWallet();
+      }
     } else {
       console.log("disconecting");
       if(disconnect) disconnect();
@@ -97,7 +99,7 @@ export function UiLayout({ children }: { children: ReactNode }) {
             connectToWallet();
           }}
         >
-          {walletAddress ? "Logout" : "Login with Keplr"}
+          { walletAddress ? "Logout" : "Login with Keplr"}
         </button>
       </div>
     </div>

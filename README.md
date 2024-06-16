@@ -1,6 +1,6 @@
 # Archwaytokenfactory - The Complete Token Launch Suite for Archway
 
-ArchwayTokenFactory is a powerful tool that enables users to easily launch tokens on the Archway blockchain. With its intuitive interface and pre-configured token templates, users can create and customize their own tokens in just a few clicks.
+ArchwayTokenFactory is a powerful tool that enables users to easily launch cw20 tokens on the Archway blockchain. With its intuitive interface and pre-configured token templates, users can create and customize their own tokens in just a few clicks.
 
 ### Features
 
@@ -11,12 +11,12 @@ ArchwayTokenFactory is a powerful tool that enables users to easily launch token
 
 ### Getting Started
 
-1. **Visit the ArchwayTokenFactory website**: Go to https://archwaytoken.factory and click on the "Launch Token" button.
-2. **Select a template**: Choose from one of the pre-configured token templates that best suits your needs.
+1. **Visit the ArchwayTokenFactory website**: Go to https://archway-tokenfactory.vercel.app/ and click on the "Login" button.
+2. **Select a template**: Choose from one of the pre-configured token templates/ presets that best suits your needs.
 3. **Customize your token**: Adjust the token details, such as name, symbol, supply allocation, voting rules, and more.
 4. **Launch your token**: Review your token settings and click "Launch Token" to generate your token on the Archway blockchain.
 
-### Templates
+### Token Templates / Presets
 
 ArchwayTokenFactory offers several pre-configured token templates to choose from:
 
@@ -31,11 +31,6 @@ ArchwayTokenFactory offers several pre-configured token templates to choose from
 ### Documentation
 
 For more detailed information on each template and its specific parameters, please refer to the documentation provided for each template.
-
-### Support
-
-If you have any questions or need assistance, please reach out to the ArchwayTokenFactory support team at support@archwaytoken.factory.
-
 
 ## Start the application
 

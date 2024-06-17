@@ -6,7 +6,7 @@ import { useTransactionToast } from "../ui/ui-layout";
 
 export function useGetProject({ mint }: { mint: PublicKey }) {
 
-    const wallet = useWallet();
+
 
     const program = {
         programId : "archway122334455"

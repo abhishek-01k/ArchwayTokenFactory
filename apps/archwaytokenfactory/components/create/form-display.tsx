@@ -21,16 +21,16 @@ export function FormDisplay(
     const [displayTokenAdvSettings, setDisplayTokenAdvSettings] = useState(false);
     const [displayAdvSettings, setDisplayAdvSettings] = useState(false);
     const {formData, type} = useContext(FormContext) as FormContextType;
-
+    console.log(preset,"preset")
     return (
         <div className="flex flex-col md:flex-row w-full mb-16">
             <div className="create-main w-full md:w-3/4 flex flex-col items-center gap-6 z-10 mt-8">
             <FormTopHeading title="Token Details" />
-            
+
             <FormComponent title="Preset Details" meta="">
                 <h5 className="mt-4 mb-1 text-sm">
                     Read more about this preset here: 
-                    <Link href={"https://github.com/Tatami-Maker/documentation/blob/main/"+preset.link} 
+                    <Link href={"https://github.com/abhishek-01k/ArchwayTokenFactory/tree/master/apps/archwaytokenfactory/presets/"+preset.link} 
                         target="_blank" rel="noopener noreferrer" passHref className="text-[#F3BC51]
                         hover:text-white ml-2">
                     {preset.title}
@@ -40,10 +40,10 @@ export function FormDisplay(
             
             <FormComponent title="Branding" meta="Name the token and add your logo">
                 
-                <FormInput name="Token Name" placeholder="e.g. Tatami Coin" type="text" addClass="w-11/12" value={formData.name}
+                <FormInput name="Token Name" placeholder="e.g. Archway Coin" type="text" addClass="w-11/12" value={formData.name}
                 onChange={(e) => handleChange('name', e.target.value)} errorMsg={formError.name}/>
                 
-                <FormInput name="Token Symbol" placeholder="e.g. TCC" type="text" addClass="w-1/2" value={formData.symbol}
+                <FormInput name="Token Symbol" placeholder="e.g. ATF" type="text" addClass="w-1/2" value={formData.symbol}
                 onChange={(e) => handleChange('symbol', e.target.value)} errorMsg={formError.symbol}/>
                 
                 <FormInput name="Token Supply" placeholder="e.g. 100000" type="number" addClass="w-1/2" 
@@ -77,7 +77,7 @@ export function FormDisplay(
             </FormComponent>
             
             <FormComponent title="DAO Details" meta="Name the DAO and edit the config">
-                <FormInput name="DAO Name" placeholder="e.g. Tatami Coin DAO" type="text" addClass="w-11/12" 
+                <FormInput name="DAO Name" placeholder="e.g. ACH Coin DAO" type="text" addClass="w-11/12" 
                     value={formData.daoName} onChange={(e) => handleChange('daoName', e.target.value)}
                     errorMsg={formError.daoName}
                 />

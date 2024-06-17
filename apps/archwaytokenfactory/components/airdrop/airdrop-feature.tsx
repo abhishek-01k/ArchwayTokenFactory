@@ -2,7 +2,6 @@
 
 import { useParams } from 'next/navigation';
 import { useMemo } from 'react';
-import {PublicKey} from "@solana/web3.js";
 import { AirdropBar, DistributionButton, RecipientsInfo } from './airdrop-ui';
 
 export default function AirdropFeature() {
@@ -12,7 +11,8 @@ export default function AirdropFeature() {
         return;
         }
         try {
-            return new PublicKey(params.address);
+            const addr = params.address;
+            return addr;
         } catch (e) {
             console.log(`Invalid public key`, e);
         }

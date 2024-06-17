@@ -12,8 +12,8 @@ In essence, ArchwayTokenFactory simplifies the process of launching and managing
 
 # ArchwayTokenFactory Preset Documentation
 
-1. [Investment DAO Preset](https://github.com/abhishek-01k/ArchwayTokenFactory/apps/archwaytokenfactory/preset-documentation/blob/main/Investment%20DAO%20Preset.md)
-2. [Memecoin Preset](https://github.com/abhishek-01k/ArchwayTokenFactory/apps/archwaytokenfactory/preset-documentation/blob/main/Memecoin%20Preset.md)
-3. [Early Stage DAO Preset](https://github.com/abhishek-01k/ArchwayTokenFactory/apps/archwaytokenfactory/preset-documentation/blob/main/Early%20Stage%20DAO%20Preset%20-%20Documentation.md)
-4. [CommonInterestDAO Preset](https://github.com/abhishek-01k/ArchwayTokenFactory/apps/archwaytokenfactory/preset-documentation/blob/main/Common%20Interest%20DAO%20Preset.md)
-5. [CrowdsourceTokenPreset](https://github.com/abhishek-01k/ArchwayTokenFactory/apps/archwaytokenfactory/preset-documentation/blob/main/Crowdsource%20Token.md)
+1. [Investment DAO Preset](https://github.com/abhishek-01k/ArchwayTokenFactory/apps/archwaytokenfactory/presets/blob/main/Investment%20DAO%20Preset.md)
+2. [Memecoin Preset](https://github.com/abhishek-01k/ArchwayTokenFactory/apps/archwaytokenfactory/presets/blob/main/Memecoin%20Preset.md)
+3. [Early Stage DAO Preset](https://github.com/abhishek-01k/ArchwayTokenFactory/apps/archwaytokenfactory/presets/blob/main/Early%20Stage%20DAO%20Preset%20-%20Documentation.md)
+4. [CommonInterestDAO Preset](https://github.com/abhishek-01k/ArchwayTokenFactory/apps/archwaytokenfactory/presets/blob/main/Common%20Interest%20DAO%20Preset.md)
+5. [CrowdsourceTokenPreset](https://github.com/abhishek-01k/ArchwayTokenFactory/apps/archwaytokenfactory/presets/blob/main/Crowdsource%20Token.md)

@@ -5,11 +5,9 @@ import {presets} from "../dashboard/presets";
 import {createDaoAddress, FormDataError, joiValidation} from "../../app/utils/validation";
 import { FormDisplay } from "./form-display";
 import { FormReview } from "./form-review";
-import { useWallet } from "@solana/wallet-adapter-react";
 import toast from "react-hot-toast";
 import { useParams, useRouter } from "next/navigation";
 import { FormComplete } from "./form-complete";
-import { PublicKey } from "@solana/web3.js";
 import { useDaoAvailCheck } from "./create-data-access";
 import { FormLaunch } from "./form-launch";
 
@@ -26,15 +24,9 @@ export default function CreateFeature() {
         type = parseInt(typeParam)
     }
 
-    const {connected} = useWallet();
+
     const router = useRouter();
 
-    useEffect(() => {
-        if (!connected) {
-            toast.error(`Wallet is not connected!`);
-            router.push('/');
-        }
-    }, [connected, router])
     
     const preset = presets[type-1];
     const defaultErrors = {

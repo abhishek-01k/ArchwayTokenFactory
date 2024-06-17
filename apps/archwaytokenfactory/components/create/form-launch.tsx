@@ -2,7 +2,6 @@ import { ChangeEvent, useContext, useEffect, useMemo, useState } from "react";
 import { FormContext } from "./create-feature";
 import FormComponent, { FormAllocationTabs, FormButton, FormInput, FormMinHeading, FormTopHeading, DeleteButton} from "./form-component";
 import {useCreateMetadata} from "./create-data-access";
-import { useWallet } from "@solana/wallet-adapter-react";
 // import toast from "react-hot-toast";
 import { PublicKey } from "@solana/web3.js";
 import {Chart} from "chart.js/auto";
@@ -15,7 +14,7 @@ export function FormLaunch({
     imgLink, tx, jsonLink, buttonText, setImgLink, setJsonLink, setTx, setButtonText, dbId, setDbId
 }: FormLaunchProps) {
     const {formData, setPage, imgFile} = useContext(FormContext) as FormContextType;
-    const {publicKey} = useWallet();
+    const publicKey = 'archway';
 
     const {symbol, supply, decimals} = formData;
 
@@ -84,7 +83,7 @@ export function FormLaunch({
     // Mutation
     const mutation = useCreateMetadata({
         img: imgFile as File,
-        address: publicKey as PublicKey,
+        address: publicKey,
         setButtonText,
         setImgLink,
         setJsonLink,

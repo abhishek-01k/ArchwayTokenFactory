@@ -3,7 +3,6 @@ import { FormContext } from "./create-feature";
 import FormComponent, { FormAllocationTabs, FormButton, FormInput, FormMinHeading, FormTopHeading, DeleteButton} from "./form-component";
 import {useCreateMetadata} from "./create-data-access";
 // import toast from "react-hot-toast";
-import { PublicKey } from "@solana/web3.js";
 import {Chart} from "chart.js/auto";
 import {CSVToArray} from "../../app/utils/csv";
 import { ellipsify } from "../ui/ui-layout";
@@ -117,7 +116,7 @@ export function FormLaunch({
                 return;
             } else {
                 try {
-                    const teamAddress = new PublicKey(teamWallet);
+                    const teamAddress = teamWallet;
                 } catch {
                     setTeamWalletError("Invalid Team Wallet, please check and re-submit");
                     return;
@@ -141,7 +140,7 @@ export function FormLaunch({
         }
 
         mutation.mutate({
-            teamWallet: teamWallet? new PublicKey(teamWallet) : null,
+            teamWallet: teamWallet? teamWallet : null,
             allocation: allocationInTokens,
             recipients
         });
@@ -152,13 +151,13 @@ export function FormLaunch({
         setCsvError("");
 
         try {
-            const newAddress = new PublicKey(currentAddress);
+            const newAddress = currentAddress;
             const newAmount = BigInt(validateTokenString(currentAmount, decimals));
 
             const currentRecipients = [...recipients];
 
             currentRecipients.push({
-                pubkey: newAddress.toBase58(),
+                pubkey: newAddress,
                 amount: newAmount
             });
 
@@ -210,7 +209,7 @@ export function FormLaunch({
 
                     for (let i = 0; i<participants.length; i++) {
                         try {
-                            const address = new PublicKey(participants[i][0]);
+                            const address = participants[i][0];
                             const token = BigInt(validateTokenString(participants[i][1], decimals));
 
                             participantAddresses.push({
@@ -288,7 +287,7 @@ export function FormLaunch({
                     <p className="text-[#cc3300] text-sm mt-2 font-normal ml-4">{teamWalletError}</p>
                 </FormComponent>
 
-                <FormComponent title="Curated List" meta="Choose premium lists of Solana users to participate in your coin">
+                <FormComponent title="Curated List" meta="Choose premium lists of specific users to participate in your coin">
                     <div className={`w-full md:w-1/2 border-[1px] ${selectList ? "border-golden-100" : "border-border-form"} rounded-md py-2 
                         px-4 cursor-pointer bg-gradient-to-b from-[#05051C] to-[#150A40] mt-4`} 
                         onClick={() => setSelectList(!selectList)}>

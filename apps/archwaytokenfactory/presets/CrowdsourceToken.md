@@ -23,7 +23,9 @@ Egalitarian and Rug Proof! Great for crowdsourcing and kickstarting new ideas by
 
 ## Who is your community?
 
-All-Stars List is an invite only, application based list of wallets you can use to airdrop your token to. It only includes members of the Solana community that earned their way into this list. No bots - no duplicates.
+All-Stars List is an invite only list, application based list of wallets you can use to airdrop your token to.
+
+It only includes members of a specific community that earned their way into this list. No bots - no duplicates.
 
 ## What is the DAO going to be used for?
 
